@@ -34,19 +34,19 @@
       <HintPath>..\packages\Antlr3.Runtime.PCL.3.5.0.2\lib\portable-win+net40+sl40+wp\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="OsmSharp">
-      <HintPath>..\packages\OsmSharp.4.3.0.1002-beta\lib\net45\OsmSharp.dll</HintPath>
+      <HintPath>..\..\..\wastevision\OsmSharp_features_tsptw\Output\Debug\Any CPU\OsmSharp.dll</HintPath>
     </Reference>
     <Reference Include="OsmSharp.Osm">
-      <HintPath>..\packages\OsmSharp.4.3.0.1002-beta\lib\net45\OsmSharp.Osm.dll</HintPath>
+      <HintPath>..\..\..\wastevision\OsmSharp_features_tsptw\Output\Debug\Any CPU\OsmSharp.Osm.dll</HintPath>
     </Reference>
     <Reference Include="OsmSharp.Routing">
-      <HintPath>..\packages\OsmSharp.4.3.0.1002-beta\lib\net45\OsmSharp.Routing.dll</HintPath>
+      <HintPath>..\..\..\wastevision\OsmSharp_features_tsptw\Output\Debug\Any CPU\OsmSharp.Routing.dll</HintPath>
     </Reference>
     <Reference Include="OsmSharp.UI">
-      <HintPath>..\packages\OsmSharp.4.3.0.1002-beta\lib\net45\OsmSharp.UI.dll</HintPath>
+      <HintPath>..\..\..\wastevision\OsmSharp_features_tsptw\Output\Debug\Any CPU\OsmSharp.UI.dll</HintPath>
     </Reference>
     <Reference Include="OsmSharp.WinForms.UI">
-      <HintPath>..\packages\OsmSharp.4.3.0.1002-beta\lib\net45\OsmSharp.WinForms.UI.dll</HintPath>
+      <HintPath>..\..\..\wastevision\OsmSharp_features_tsptw\Output\Debug\Any CPU\OsmSharp.WinForms.UI.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
       <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
@@ -63,7 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Parser\TSPTWProblemReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
