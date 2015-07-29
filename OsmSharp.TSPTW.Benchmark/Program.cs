@@ -20,6 +20,13 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
+using OsmSharp.Logistics.Routes;
+using OsmSharp.Logistics.Solutions.TSPTW;
+using OsmSharp.Logistics.Solutions.TSPTW.LocalSearch;
+using OsmSharp.Logistics.Solutions.TSPTW.Objectives;
+using OsmSharp.Logistics.Solutions.TSPTW.VNS;
+using OsmSharp.Logistics.Solvers;
+using OsmSharp.Logistics.Solvers.Iterative;
 using System;
 using System.Reflection;
 
@@ -35,18 +42,50 @@ namespace OsmSharp.TSPTW.Benchmark
             // set the seed manually.
             OsmSharp.Math.Random.StaticRandomGenerator.Set(116542346);
 
-            var problem = OsmSharp.TSPTW.Parser.TSPTWProblemReader.Read(
-                Assembly.GetExecutingAssembly().GetManifestResourceStream("OsmSharp.TSPTW.Benchmark.Problems.AFG.rbg010a.tw"));
+            var vnsSolver = new VNSConstructionSolver();
+            var objective = new FeasibleObjective();
 
-            var vnsSolver = new OsmSharp.Math.TSPTW.VNS.VNSSolver(
-                new OsmSharp.Math.TSPTW.Random.RandomSolver(),
-                new OsmSharp.Math.TSPTW.Random.Random1Shift(),
-                new OsmSharp.Math.TSPTW.LocalSearch.Local1Shift());
-            var fitness = 0.0;
-            var route = vnsSolver.Solve(problem, out fitness);
+            Program.SolveAll(vnsSolver, "OsmSharp.TSPTW.Benchmark.Problems.AFG", objective);
+            Program.SolveAll(vnsSolver, "OsmSharp.TSPTW.Benchmark.Problems.Dumas", objective);
 
-            OsmSharp.Logging.Log.TraceEvent("Program", Logging.TraceEventType.Information, "Finished!");
             Console.ReadLine();
+        }
+
+        public static void SolveAll(SolverBase<ITSPTW, ITSPTWObjective, IRoute> solver, string path, TSPTWObjectiveBase objective)
+        {
+            var resourceNames = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+            foreach(var resourceName in resourceNames)
+            {
+                if (resourceName.StartsWith(path))
+                {
+                    Program.Solve(solver, resourceName, objective);
+                }
+            }
+        }
+
+        public static void Solve(SolverBase<ITSPTW, ITSPTWObjective, IRoute> solver, string problemName, TSPTWObjectiveBase objective)
+        {
+            OsmSharp.Logging.Log.TraceEvent("Program.Solve", Logging.TraceEventType.Information,
+                string.Format("Solving: {0}", problemName));
+
+            var problem = OsmSharp.TSPTW.Parser.TSPTWProblemReader.Read(
+                Assembly.GetExecutingAssembly().GetManifestResourceStream(problemName));
+
+            Program.Solve(solver, problem, objective);
+        }
+
+        public static void Solve(SolverBase<ITSPTW, ITSPTWObjective, IRoute> solver, ITSPTW problem, TSPTWObjectiveBase objective)
+        {
+            var info = new PerformanceInfoConsumer("solver");
+            info.Start();
+
+            var fitness = 0.0;
+            var route = solver.Solve(problem, objective, out fitness);
+
+            info.Stop();
+
+            OsmSharp.Logging.Log.TraceEvent("Program.Solve", Logging.TraceEventType.Information,
+                string.Format("Finished with {0}", fitness));
         }
     }
 }

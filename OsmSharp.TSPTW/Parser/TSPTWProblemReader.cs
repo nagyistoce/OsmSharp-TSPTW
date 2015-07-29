@@ -20,7 +20,8 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-using OsmSharp.Math.TSPTW;
+using OsmSharp.Logistics.Solutions;
+using OsmSharp.Logistics.Solutions.TSPTW;
 using OsmSharp.Math.VRP;
 using System;
 using System.IO;
@@ -37,7 +38,7 @@ namespace OsmSharp.TSPTW.Parser
         /// </summary>
         /// <param name="stream"></param>
         /// <returns></returns>
-        public static IProblem Read(Stream stream)
+        public static ITSPTW Read(Stream stream)
         {
             var streamReader = new StreamReader(stream);
 
@@ -75,8 +76,7 @@ namespace OsmSharp.TSPTW.Parser
                     Max = int.Parse(lineSplit[1])
                 };
             }
-
-            return MatrixProblem.CreateATSPOpen(weights, windows);
+            return new TSPTWProblem(0, 0, weights, windows);
         }
     }
 }
