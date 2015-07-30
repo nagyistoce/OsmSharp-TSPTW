@@ -42,7 +42,7 @@ namespace OsmSharp.TSPTW.Benchmark
             // set the seed manually.
             OsmSharp.Math.Random.StaticRandomGenerator.Set(116542346);
 
-            var vnsSolver = new VNSConstructionSolver();
+            var vnsSolver = new VNSSolver();
             var objective = new FeasibleObjective();
 
             Program.SolveAll(vnsSolver, "OsmSharp.TSPTW.Benchmark.Problems.AFG", objective);

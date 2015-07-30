@@ -37,12 +37,12 @@
       <HintPath>..\packages\OsmSharp.4.4.0.1044-beta\lib\net45\OsmSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="OsmSharp.Logistics, Version=0.0.1.59, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OsmSharp.Logistics.0.0.1.59-beta\lib\net45\OsmSharp.Logistics.dll</HintPath>
+    <Reference Include="OsmSharp.Logistics, Version=0.0.1.61, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OsmSharp.Logistics.0.0.1.61-beta\lib\net45\OsmSharp.Logistics.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="OsmSharp.Logistics.Routing, Version=0.0.1.59, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OsmSharp.Logistics.0.0.1.59-beta\lib\net45\OsmSharp.Logistics.Routing.dll</HintPath>
+    <Reference Include="OsmSharp.Logistics.Routing, Version=0.0.1.61, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OsmSharp.Logistics.0.0.1.61-beta\lib\net45\OsmSharp.Logistics.Routing.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="OsmSharp.Osm, Version=4.4.0.1044, Culture=neutral, processorArchitecture=MSIL">
